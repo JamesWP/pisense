@@ -3,4 +3,5 @@ project(pisense)
 
 add_executable(main main.c bme280.c)
 target_link_libraries(main PUBLIC microhttpd)
+target_include_directories(main PUBLIC .)
 
