@@ -10,9 +10,20 @@
 
 char buffer[2048];
 
+int write_metric(char*buffer, size_t buffer_size, int device_id, char* metric_name,  float value)
+{
+  return snprintf(buffer, buffer_size, "%s{device_address=0x%02x} %f\n", metric_name, device_id, value);
+}
+
 int get_measurements(char* buffer, size_t buffer_size)
 {
-  return snprintf(buffer, buffer_size, "Measurement=9001degrees\n WOW!\n");
+  int total = 0;
+
+  total += write_metric(buffer + total, buffer_size - total, 1, "bme280_temperature", 99.5);
+  total += write_metric(buffer + total, buffer_size - total, 1, "bme280_pressure", 1234.4);
+  total += write_metric(buffer + total, buffer_size - total, 1, "bme280_humidity", 34.3);
+
+  return total;
 }
 
 int server_error(struct MHD_Connection *connection)
