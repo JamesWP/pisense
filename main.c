@@ -9,6 +9,7 @@
 #include <microhttpd.h>
 #include <string.h>
 #include <fcntl.h>
+#include <stdio.h>
 
 #include "bme280.h"
 
@@ -240,7 +241,16 @@ int main(int argc, char* argv[]) {
   if (NULL == daemon) return 1;
 
   printf("Running websever on port: %d\n", PORT);
-  getchar();
+
+  if (isatty(fileno(stdin))) {
+    printf("awaiting user input before closing\n");
+    getchar();
+  } else {
+    printf("awaiting sigterm before closing\n");
+    while(1) { 
+      pause(); 
+    }
+  }
 
   MHD_stop_daemon(daemon); 
  
