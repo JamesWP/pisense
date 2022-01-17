@@ -12,3 +12,4 @@ $ sudo cp pisense.timer /etc/systemd/system/pisense.timer
 $ sudo systemctl daemon-reload 
 $ sudo systemctl enable pisense.service 
 $ sudo systemctl enable pisense.timer
+$ sudo systemctl start pisense.timer
