@@ -5,6 +5,7 @@ prometheus compatible bme230 i2c sensor reporter
 
 # setup
 
+```
 $ python3.7 -m pip install --system -r requirements.txt
 $ sudo python3.7 setup.py install
 $ sudo cp pisense.service /etc/systemd/system/pisense.service
@@ -13,3 +14,4 @@ $ sudo systemctl daemon-reload
 $ sudo systemctl enable pisense.service 
 $ sudo systemctl enable pisense.timer
 $ sudo systemctl start pisense.timer
+```
