@@ -1,0 +1,10 @@
+[Unit]
+Description=Pisense
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3.7 -m pisense.pisense_publish
+
+[Install]
+WantedBy=multi-user.target

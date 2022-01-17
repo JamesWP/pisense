@@ -176,6 +176,12 @@ def readBME280All(addr=DEVICE):
 
     return temperature / 100.0, pressure / 100.0, humidity
 
+def get_sensor_data_for_publish():
+    temperature, pressure, humidity = readBME280All()
+
+    yield "temperature", f"{temperature:2.2f}"
+    yield "pressure", f"{pressure:2.2f}",
+    yield "humidity", f"{humidity:2.2f}"
 
 def main():
 

@@ -1,0 +1,10 @@
+[Unit]
+Description=Trigger data publish
+Requires=pisense.service
+
+[Timer]
+Unit=pisense.service
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target
