@@ -15,3 +15,8 @@ $ sudo systemctl enable pisense.service
 $ sudo systemctl enable pisense.timer
 $ sudo systemctl start pisense.timer
 ```
+
+# Building dpkg
+```console
+$ dpkg-buildpackage
+```
